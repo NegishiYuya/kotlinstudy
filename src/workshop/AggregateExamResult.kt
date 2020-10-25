@@ -32,7 +32,7 @@ fun main() {
  * 試験結果のListを返却する.
  */
 fun getExamResultList(): List<ExamResult> {
-    // TODO :足りないデータを追加してください.
+    // TODO :足りないデータを追加・id=1,2のデータの修正をしてください.
     return listOf(
             ExamResult(id = 1, groupId = 1, name = "太郎", math = 50, english = 90),
             ExamResult(id = 2, groupId = 2, name = "花子", math = 60, english = 30)
