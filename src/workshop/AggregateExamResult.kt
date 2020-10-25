@@ -11,30 +11,43 @@ fun main() {
     println("===== groupIdが2の人の名前を標準出力する =====")
     examResultList.filter { it.groupId == 2 }.forEach { println(it.name) }
 
-    // TODO: 数学の点数が40点以上の人数を標準出力してください.
+    // 数学の点数が40点以上の人数を標準出力する.
     println("===== 数学の点数が40点以上の人数を標準出力する =====")
+    println(examResultList.count { it.math >= 40 })
 
-    // TODO: 英語の平均点を標準出力してください.
+    // 英語の平均点を標準出力する.
     println("===== 英語の平均点を標準出力する =====")
+    println(examResultList.map { it.english }.average())
 
-    // TODO: idの降順でidと名前を標準出力してください.
+    // idの降順でidと名前を標準出力する.
     println("===== idの降順でidと名前を標準出力を表示する =====")
+    examResultList.sortedByDescending { it.id }.forEach {
+        println("${it.id}  ${it.name}")
+    }
 
-    // TODO: 2科目の平均点が一番高い人の名前と点数を標準出力してください.
+    // 2科目の平均点が一番高い人の名前と点数を標準出力する.
     println("===== 2科目の平均点が一番高い人の名前と点数を標準出力する =====")
+    val highestResult = examResultList.maxBy { it.getAverage() }
+    println("名前: ${highestResult?.name}, 点数: ${highestResult?.getAverage()}")
 
-    // TODO: groupIdごとの英語の最高得点者の名前を標準出力してください.
+    // groupIdごとの英語の最高得点者の名前を標準出力する.
     println("===== groupIdごとの英語の最高得点者の名前を標準出力する  =====")
-
+    examResultList.groupBy { it.groupId }.forEach { (groupId, list) ->
+        val examResult = list.maxBy { it.english }
+        println("groupIdが $groupId の 英語の最高得点者は ${examResult?.name} さん で 得点は ${examResult?.english}")
+    }
 }
 
 /**
  * 試験結果のListを返却する.
  */
 fun getExamResultList(): List<ExamResult> {
-    // TODO :足りないデータを追加してください.
+    // データをListに設定して返却する
     return listOf(
-            ExamResult(id = 1, groupId = 1, name = "太郎", math = 50, english = 90),
-            ExamResult(id = 2, groupId = 2, name = "花子", math = 60, english = 30)
+            ExamResult(id = 1, groupId = 1, name = "太郎", math = 39, english = 73),
+            ExamResult(id = 2, groupId = 2, name = "花子", math = 40, english = 70),
+            ExamResult(id = 3, groupId = 2, name = "三郎", math = 41, english = 69),
+            ExamResult(id = 4, groupId = 3, name = "四郎", math = 42, english = 68),
+            ExamResult(id = 5, groupId = 3, name = "五郎", math = 42, english = 69)
     )
 }

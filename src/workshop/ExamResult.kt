@@ -14,7 +14,7 @@ class ExamResult(
      * 数学と英語の平均点を返却する.
      */
     fun getAverage(): Int {
-        // TODO: 平均点の算出処理を実装してください.
-        return 0
+        // 平均点の算出
+        return (math + english) / 2
     }
 }
