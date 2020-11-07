@@ -1,4 +1,4 @@
-package workshop.`1026`
+package workshop.oct26
 
 /**
  * 試験結果を管理するクラス.
