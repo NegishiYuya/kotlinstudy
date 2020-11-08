@@ -5,16 +5,16 @@ package workshop.nov09
  */
 fun main() {
     // 会員情報の全件を取得する
-    val allUserList = getAllUserList();
+    val allUserList = getAllUserList()
 
     // 第1問 Listのsizeの取得(仕様：会員のリストの総件数の返却)
     println(" ======【第1問】====== ")
-    val userListSize: Int = getUserListSize(userList = allUserList);
+    val userListSize: Int = getUserListSize(userList = allUserList)
     println("会員の総件数は $userListSize です")
 
     // 第2問 Listから特定の条件に合う要素のみ抽出する(仕様：年齢が30歳以下の会員の返却)
     println(" ======【第2問】====== ")
-    val under30: List<User> = filterUserListByAge(userList = allUserList, age = 30);
+    val under30: List<User> = filterUserListByAge(userList = allUserList, age = 30)
     println("30歳未満の会員の名前は、")
     under30.forEach { print("${it.name} ") }
     println("です")
@@ -26,9 +26,9 @@ fun main() {
 
     // 第4問 Listから特定の条件に合う要素を1件抽出する(仕様: 名前が「戸畑次郎」のIDの取得)
     println(" ======【第4問】====== ")
-    val name: String = "戸畑次郎"
-    val id: Int? = findIdByName(userList = allUserList, name = name);
-    println("$name さんの idは $id です");
+    val name = "戸畑次郎"
+    val id: Int? = findIdByName(userList = allUserList, name = name)
+    println("$name さんの idは $id です")
 
     // 第5問 Listの要素の特定のプロパティでグルーピングされたMapを作る(仕様: 年齢ごとの会員リストを作成したい)
     println(" ======【第5問】====== ")
@@ -59,24 +59,24 @@ fun getAllUserList(): List<User> {
  * 引数で渡すリストの件数を返却する.
  */
 fun getUserListSize(userList: List<User>): Int {
-    // TODO: 引数で渡すリストの件数を返却する(ただし、countは使わないこと)
-    return 0
+    // 引数で渡すリストの件数を返却する
+    return userList.size
 }
 
 /**
  * 第1引数で渡すリストから、第2引数で渡す年齢以下である会員のリストを返却する.
  */
 fun filterUserListByAge(userList: List<User>, age: Int): List<User> {
-    // TODO: 第2引数で渡す年齢以下である会員のリストを返却する
-    return listOf()
+    // 第2引数で渡す年齢以下である会員のリストを返却する
+    return userList.filter { it.age < age }
 }
 
 /**
  * 第1引数で渡すリストから、第2引数で渡す性別に合う会員の件数を返却する.
  */
 fun countUserByGender(userList: List<User>, gender: Int): Int {
-    // TODO: 第2引数で渡す性別に合う会員の件数を返却する(ただし、filterは使わないこと)
-    return 0
+    // 第2引数で渡す性別に合う会員の件数を返却する(ただし、filterは使わないこと)
+    return userList.count { it.gender == gender }
 }
 
 /**
@@ -84,9 +84,9 @@ fun countUserByGender(userList: List<User>, gender: Int): Int {
  * 注意事項: 名前に合う会員が見つからなかった場合はnullを返却すること
  */
 fun findIdByName(userList: List<User>, name: String): Int? {
-    // TODO: 条件に合う1件を抽出し、その結果からIDを返却する
-    // TODO: (ヒント)条件に合う1件が抽出できずnullの可能性もあり
-    return 0
+    // 条件に合う1件を抽出し、その結果からIDを返却する
+    // (ヒント)条件に合う1件が抽出できずnullの可能性もあり
+    return userList.find { it.name == name }?.id
 }
 
 /**
@@ -94,6 +94,6 @@ fun findIdByName(userList: List<User>, name: String): Int? {
  *  Key:年齢, Value: 会員のListの形式のMapで返却する.
  */
 fun groupByAge(userList: List<User>): Map<Int, List<User>> {
-    // TODO: 会員のListを年齢でグルーピングしMapで返却する
-    return mapOf()
+    // 会員のListを年齢でグルーピングしMapで返却する
+    return userList.groupBy { it.age }
 }
