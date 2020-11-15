@@ -59,24 +59,24 @@ fun getAllUserList(): List<User> {
  * 引数で渡すリストの件数を返却する.
  */
 fun getUserListSize(userList: List<User>): Int {
-    // TODO: 引数で渡すリストの件数を返却する(ただし、countは使わないこと)
-    return 0
+    // 引数で渡すリストの件数を返却する
+    return userList.size
 }
 
 /**
  * 第1引数で渡すリストから、第2引数で渡す年齢以下である会員のリストを返却する.
  */
 fun filterUserListByAge(userList: List<User>, age: Int): List<User> {
-    // TODO: 第2引数で渡す年齢以下である会員のリストを返却する
-    return listOf()
+    // 第2引数で渡す年齢以下である会員のリストを返却する
+    return userList.filter { it.age < age }
 }
 
 /**
  * 第1引数で渡すリストから、第2引数で渡す性別に合う会員の件数を返却する.
  */
 fun countUserByGender(userList: List<User>, gender: Int): Int {
-    // TODO: 第2引数で渡す性別に合う会員の件数を返却する(ただし、filterは使わないこと)
-    return 0
+    // 第2引数で渡す性別に合う会員の件数を返却する(ただし、filterは使わないこと)
+    return userList.count { it.gender == gender }
 }
 
 /**
@@ -84,9 +84,9 @@ fun countUserByGender(userList: List<User>, gender: Int): Int {
  * 注意事項: 名前に合う会員が見つからなかった場合はnullを返却すること
  */
 fun findIdByName(userList: List<User>, name: String): Int? {
-    // TODO: 条件に合う1件を抽出し、その結果からIDを返却する
-    // TODO: (ヒント)条件に合う1件が抽出できずnullの可能性もあり
-    return 0
+    // 条件に合う1件を抽出し、その結果からIDを返却する
+    // (ヒント)条件に合う1件が抽出できずnullの可能性もあり
+    return userList.find { it.name == name }?.id
 }
 
 /**
@@ -94,6 +94,6 @@ fun findIdByName(userList: List<User>, name: String): Int? {
  *  Key:年齢, Value: 会員のListの形式のMapで返却する.
  */
 fun groupByAge(userList: List<User>): Map<Int, List<User>> {
-    // TODO: 会員のListを年齢でグルーピングしMapで返却する
-    return mapOf()
+    // 会員のListを年齢でグルーピングしMapで返却する
+    return userList.groupBy { it.age }
 }
